@@ -1,0 +1,167 @@
+.tentang-page {
+  padding-bottom: 5rem;
+}
+
+.tentang-hero {
+  position: relative;
+  background: url('https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Raja_Ampat_Islands.jpg/1600px-Raja_Ampat_Islands.jpg') center/cover no-repeat;
+  padding: 8rem 0 4rem;
+  text-align: center;
+  color: white;
+  margin-bottom: 4rem;
+}
+
+.tentang-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(31, 78, 61, 0.8);
+  z-index: 1;
+}
+
+.tentang-hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.tentang-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.tentang-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tentang-section {
+  max-width: 800px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.tentang-section h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+}
+
+body.dark-mode .tentang-section h2 {
+  color: var(--color-accent);
+}
+
+.tentang-section p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text-main);
+  margin-bottom: 1.5rem;
+}
+
+.tentang-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 5rem;
+}
+
+.tentang-card {
+  background: var(--color-surface);
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.tentang-card:hover {
+  transform: translateY(-5px);
+}
+
+.tentang-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.tentang-card h3 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+body.dark-mode .tentang-card h3 {
+  color: var(--color-accent);
+}
+
+.tentang-card p {
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.tentang-developer {
+  background: rgba(31, 78, 61, 0.05);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+body.dark-mode .tentang-developer {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tentang-developer h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-primary);
+}
+
+body.dark-mode .tentang-developer h2 {
+  color: var(--color-accent);
+}
+
+.dev-profile {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.dev-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dev-initial {
+  font-size: 3rem;
+  color: white;
+  font-weight: bold;
+}
+
+.dev-info h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.dev-course {
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.dev-desc {
+  color: var(--color-text-main);
+  line-height: 1.6;
+}
+
+@media screen and (max-width: 768px) {
+  .dev-profile {
+    flex-direction: column;
+    text-align: center;
+  }
+}
