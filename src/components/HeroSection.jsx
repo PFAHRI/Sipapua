@@ -1,17 +1,36 @@
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { cultureData, natureData } from '../data/mockData';
 import './HeroSection.css';
 
+// Select some visually stunning images for the home hero
+const sliderImages = [
+  ...natureData.filter(d => !d.image.includes('placeholder')).slice(0, 3).map(d => d.image),
+  ...cultureData.filter(d => !d.image.includes('placeholder')).slice(0, 3).map(d => d.image)
+];
+
 const HeroSection = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % sliderImages.length);
+    }, 5000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="hero-container">
       <div className="hero-background">
+        {sliderImages.map((img, index) => (
+          <div 
+            key={index}
+            className={`hero-slider-bg ${index === currentImageIndex ? 'active' : ''}`}
+            style={{ backgroundImage: `url("${img}")` }}
+          />
+        ))}
         <div className="hero-overlay"></div>
-        {/* Placeholder image for hero */}
-        <img 
-          src="https://images.unsplash.com/photo-1548680190-335165c363dc?q=80&w=2000&auto=format&fit=crop" 
-          alt="Papua Landscape" 
-          className="hero-image"
-        />
       </div>
       <div className="hero-content">
         <h1 className="hero-title animate-fade-in" style={{ animationDelay: '0.2s' }}>

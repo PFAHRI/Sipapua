@@ -1,14 +1,26 @@
+import { useState } from 'react';
 import HeroSection from '../components/HeroSection';
 import CultureCard from '../components/CultureCard';
 import NatureCard from '../components/NatureCard';
+import DetailModal from '../components/DetailModal';
 import { cultureData, natureData } from '../data/mockData';
 import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
+  const [selectedModal, setSelectedModal] = useState(null);
+
   // Take only first 3 items for preview
   const featuredCulture = cultureData.slice(0, 3);
   const featuredNature = natureData.slice(0, 3);
+
+  const handleOpenModal = (item, type, source) => {
+    setSelectedModal({ item, type, source });
+  };
+
+  const handleCloseModal = () => {
+    setSelectedModal(null);
+  };
 
   return (
     <div className="home-page">
@@ -24,7 +36,11 @@ const Home = () => {
           
           <div className="card-grid">
             {featuredCulture.map(item => (
-              <CultureCard key={item.id} item={item} />
+              <CultureCard 
+                key={item.id} 
+                item={item} 
+                onClick={() => handleOpenModal(item, 'culture', cultureData)} 
+              />
             ))}
           </div>
           
@@ -69,7 +85,11 @@ const Home = () => {
           
           <div className="card-grid">
             {featuredNature.map(item => (
-              <NatureCard key={item.id} item={item} />
+              <NatureCard 
+                key={item.id} 
+                item={item} 
+                onClick={() => handleOpenModal(item, 'nature', natureData)} 
+              />
             ))}
           </div>
           
@@ -80,6 +100,17 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* Detail Modal */}
+      {selectedModal && (
+        <DetailModal 
+          item={selectedModal.item} 
+          dataSource={selectedModal.source} 
+          onClose={handleCloseModal} 
+          onItemSelect={(newItem) => setSelectedModal({...selectedModal, item: newItem})}
+          type={selectedModal.type} 
+        />
+      )}
     </div>
   );
 };

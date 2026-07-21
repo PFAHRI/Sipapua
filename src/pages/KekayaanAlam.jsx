@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { natureData } from '../data/mockData';
 import NatureCard from '../components/NatureCard';
+import DetailModal from '../components/DetailModal';
 import './Filters.css';
 
 const KekayaanAlam = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('Semua');
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const categories = ['Semua', ...new Set(natureData.map(item => item.category))];
 
@@ -20,7 +22,7 @@ const KekayaanAlam = () => {
       <div className="container">
         <h1 className="section-title">Kekayaan Alam Papua</h1>
         <p className="section-subtitle">
-          Dari puncak gunung bersalju hingga dasar laut yang penuh warna, jelajahi surga kecil yang jatuh ke bumi.
+          Temukan surga tersembunyi, bentang alam spektakuler, serta flora dan fauna endemik.
         </p>
         
         <div className="filter-container">
@@ -47,7 +49,7 @@ const KekayaanAlam = () => {
         {filteredData.length > 0 ? (
           <div className="card-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '2rem' }}>
             {filteredData.map(item => (
-              <NatureCard key={item.id} item={item} />
+              <NatureCard key={item.id} item={item} onClick={() => setSelectedItem(item)} />
             ))}
           </div>
         ) : (
@@ -56,6 +58,16 @@ const KekayaanAlam = () => {
           </div>
         )}
       </div>
+
+      {selectedItem && (
+        <DetailModal 
+          item={selectedItem} 
+          dataSource={natureData} 
+          onClose={() => setSelectedItem(null)} 
+          onItemSelect={setSelectedItem}
+          type="nature" 
+        />
+      )}
     </div>
   );
 };

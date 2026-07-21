@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { cultureData } from '../data/mockData';
 import CultureCard from '../components/CultureCard';
+import DetailModal from '../components/DetailModal';
 import './Filters.css';
 
 const Kebudayaan = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('Semua');
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const categories = ['Semua', ...new Set(cultureData.map(item => item.category))];
 
@@ -47,7 +49,7 @@ const Kebudayaan = () => {
         {filteredData.length > 0 ? (
           <div className="card-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '2rem' }}>
             {filteredData.map(item => (
-              <CultureCard key={item.id} item={item} />
+              <CultureCard key={item.id} item={item} onClick={() => setSelectedItem(item)} />
             ))}
           </div>
         ) : (
@@ -56,6 +58,16 @@ const Kebudayaan = () => {
           </div>
         )}
       </div>
+
+      {selectedItem && (
+        <DetailModal 
+          item={selectedItem} 
+          dataSource={cultureData} 
+          onClose={() => setSelectedItem(null)} 
+          onItemSelect={setSelectedItem}
+          type="culture" 
+        />
+      )}
     </div>
   );
 };

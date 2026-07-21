@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Kuis.css';
 
-const quizData = [
+const allQuizData = [
   {
     question: 'Berapa perkiraan jumlah suku bangsa asli yang mendiami pulau Papua?',
     options: ['Sekitar 50 Suku', 'Sekitar 100 Suku', 'Lebih dari 250 Suku', 'Hanya 10 Suku'],
@@ -31,15 +31,94 @@ const quizData = [
     options: ['Taman Nasional Wasur', 'Taman Nasional Teluk Cenderawasih', 'Taman Nasional Lorentz', 'Taman Nasional Komodo'],
     answer: 'Taman Nasional Lorentz',
     explanation: 'Taman Nasional Lorentz adalah Situs Warisan Dunia UNESCO dengan ekosistem terlengkap di Asia Tenggara.'
+  },
+  {
+    question: 'Dalam mitologi Suku Asmat, siapa nama tokoh pencipta manusia yang mengukir patung dan menghidupkannya dengan tifa?',
+    options: ['Ondoafi', 'Fumeripitsy', 'Manseren Mangundi', 'Biwar'],
+    answer: 'Fumeripitsy',
+    explanation: 'Mitos Fumeripitsy menceritakan bahwa manusia Asmat pertama kali diciptakan dari patung kayu yang dihidupkan dengan tabuhan tifa gaib.'
+  },
+  {
+    question: 'Sistem kepemimpinan adat masyarakat pesisir Danau Sentani yang dipimpin oleh seorang pemimpin komunal disebut?',
+    options: ['Kepala Suku', 'Big Man', 'Ondoafi', 'Raja'],
+    answer: 'Ondoafi',
+    explanation: 'Ondoafi adalah sistem kepemimpinan komunal yang sangat dihormati di wilayah Tabi (terutama pesisir Danau Sentani).'
+  },
+  {
+    question: 'Tumbuhan epifit endemik Papua yang secara tradisional dan klinis dipercaya dapat mengobati penyakit berat adalah?',
+    options: ['Sarang Semut', 'Matoa', 'Buah Merah', 'Anggrek Hitam'],
+    answer: 'Sarang Semut',
+    explanation: 'Sarang Semut (Myrmecodia) adalah tanaman obat Etnobotani yang rongganya dihuni semut dan kaya akan zat penyembuh alami.'
+  },
+  {
+    question: 'Tradisi gotong royong masyarakat Papua dalam menokok batang pohon untuk mengekstrak sari pati sebagai makanan pokok disebut?',
+    options: ['Bakar Batu', 'Memangkur Sagu', 'Sagu Sep', 'Molo'],
+    answer: 'Memangkur Sagu',
+    explanation: 'Memangkur sagu adalah proses mengekstrak pati dari batang pohon sagu, wujud kemandirian pangan masyarakat pesisir Papua.'
+  },
+  {
+    question: 'Gunung di Mimika yang memiliki kandungan mineral emas dan tembaga terbesar di dunia adalah?',
+    options: ['Puncak Jaya', 'Puncak Trikora', 'Grasberg', 'Pegunungan Arfak'],
+    answer: 'Grasberg',
+    explanation: 'Grasberg adalah keajaiban geologis Papua yang menyimpan cadangan tembaga dan emas terbesar di dunia.'
+  },
+  {
+    question: 'Apa nama alat musik tiup dari kerang laut raksasa yang digunakan oleh masyarakat pesisir Biak untuk berkomunikasi?',
+    options: ['Tifa', 'Pikon', 'Atowo', 'Kerang Terompet Fuu'],
+    answer: 'Kerang Terompet Fuu',
+    explanation: 'Fuu ditiup menggunakan cangkang kerang Triton raksasa untuk memanggil warga berkumpul di balai adat.'
+  },
+  {
+    question: 'Tarian epik kolosal Papua dimana para ksatria melompat sambil membawa panah untuk menggentarkan musuh disebut?',
+    options: ['Tari Etai', 'Tari Aluyen', 'Tari Yospan', 'Tari Perang (Fas Pobo)'],
+    answer: 'Tari Perang (Fas Pobo)',
+    explanation: 'Tari Perang adalah tarian maskulin yang sarat akan semangat peperangan dan kegagahan ksatria Papua.'
+  },
+  {
+    question: 'Burung endemik Papua berukuran raksasa yang tidak bisa terbang dan memiliki cangkang keras di kepalanya adalah?',
+    options: ['Burung Mambruk', 'Burung Cenderawasih', 'Kasuari', 'Maleo'],
+    answer: 'Kasuari',
+    explanation: 'Kasuari adalah burung primitif yang dijuluki burung paling berbahaya di dunia karena cakar dan ketangguhannya.'
+  },
+  {
+    question: 'Pakaian tradisional laki-laki pegunungan tengah Papua yang terbuat dari labu air disebut?',
+    options: ['Noken', 'Koteka', 'Mahkota Kasuari', 'Rok Rumbai'],
+    answer: 'Koteka',
+    explanation: 'Koteka terbuat dari labu air (Lagenaria siceraria) yang dikeringkan dan diikat sebagai pakaian tradisional pegunungan.'
+  },
+  {
+    question: 'Ritual memasak bersama menggunakan batu yang dibakar membara sebagai simbol perdamaian di pegunungan Papua disebut?',
+    options: ['Sagu Sep', 'Memangkur Sagu', 'Tradisi Bakar Batu (Barapen)', 'Ikan Kuah Kuning'],
+    answer: 'Tradisi Bakar Batu (Barapen)',
+    explanation: 'Bakar batu adalah ritual perdamaian dan syukuran agung dengan memasak daging dan umbi di atas batu panas.'
   }
 ];
 
 const Kuis = () => {
+  const [quizData, setQuizData] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showScore, setShowScore] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [isAnswered, setIsAnswered] = useState(false);
+
+  // Initialize random quiz pool
+  const initializeQuiz = () => {
+    // Shuffle the full array and pick exactly 10 questions
+    const shuffled = [...allQuizData].sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, 10);
+    setQuizData(selected);
+    setCurrentQuestion(0);
+    setScore(0);
+    setShowScore(false);
+    setSelectedAnswer('');
+    setIsAnswered(false);
+  };
+
+  // Run on mount
+  useEffect(() => {
+    initializeQuiz();
+  }, []);
 
   const handleAnswerClick = (option) => {
     setSelectedAnswer(option);
@@ -62,13 +141,8 @@ const Kuis = () => {
     }
   };
 
-  const resetQuiz = () => {
-    setCurrentQuestion(0);
-    setScore(0);
-    setShowScore(false);
-    setSelectedAnswer('');
-    setIsAnswered(false);
-  };
+  // If quizData is not loaded yet
+  if (quizData.length === 0) return <div className="kuis-page container section-padding"><h2 className="text-center">Memuat Kuis...</h2></div>;
 
   return (
     <div className="kuis-page container section-padding">
@@ -86,11 +160,11 @@ const Kuis = () => {
               <span className="score-total">/ {quizData.length}</span>
             </div>
             <p className="score-message">
-              {score === quizData.length ? 'Luar biasa! Anda adalah ahli Etnografi Papua.' : 
-               score >= 3 ? 'Bagus sekali! Pengetahuan Anda tentang Papua cukup luas.' : 
+              {score === quizData.length ? 'Luar biasa! Anda adalah ahli Etnografi Papua sejati.' : 
+               score >= 7 ? 'Bagus sekali! Pengetahuan Anda tentang Papua sangat membanggakan.' : 
                'Teruslah belajar dan menjelajahi kekayaan Papua di web ini!'}
             </p>
-            <button className="btn btn-primary btn-reset" onClick={resetQuiz}>
+            <button className="btn btn-primary btn-reset" onClick={initializeQuiz}>
               Mainkan Lagi
             </button>
           </div>

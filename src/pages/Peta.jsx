@@ -24,7 +24,7 @@ const mapData = [
     category: 'Arsitektur & Suku Dani',
     description: 'Pusat kebudayaan Suku Dani dan letak dari rumah adat Honai.',
     position: [-4.0911, 138.9485],
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/20170903_Papouasie_Baliem_valley_15.jpg/300px-20170903_Papouasie_Baliem_valley_15.jpg'
+    image: '/images/LEMBAH BALIEM.jpg'
   },
   {
     id: 2,
@@ -32,7 +32,7 @@ const mapData = [
     category: 'Seni Rupa (Ukiran)',
     description: 'Terkenal ke mancanegara karena seni ukir patung kayu magis Suku Asmat.',
     position: [-5.6267, 138.3842],
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/COLLECTIE_TROPENMUSEUM_Houten_voorouderbeeld_van_de_Asmat_TMnr_5974-5.jpg/300px-COLLECTIE_TROPENMUSEUM_Houten_voorouderbeeld_van_de_Asmat_TMnr_5974-5.jpg'
+    image: '/images/UKIRAN ASMAT.jpg'
   },
   {
     id: 3,
@@ -40,7 +40,7 @@ const mapData = [
     category: 'Ekowisata',
     description: 'Surga terumbu karang dan destinasi ekowisata perairan terbaik di dunia.',
     position: [-0.2323, 130.5165],
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Piaynemo_Raja_Ampat.jpg/300px-Piaynemo_Raja_Ampat.jpg'
+    image: '/images/KEPULAUAN RAJA AMPAT.png'
   },
   {
     id: 4,
@@ -48,7 +48,7 @@ const mapData = [
     category: 'Geografis',
     description: 'Puncak tertinggi di Indonesia dengan ketinggian 4.884 mdpl dengan salju abadi.',
     position: [-4.0833, 137.1833],
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Puncak_Jaya.jpg/300px-Puncak_Jaya.jpg'
+    image: '/images/PUNCAK JAYA (Carstensz Pyramid).jpg'
   },
   {
     id: 5,
@@ -56,7 +56,31 @@ const mapData = [
     category: 'Danau & Budaya Tabi',
     description: 'Pusat budaya suku di sekitar danau dan lokasi peninggalan megalitik.',
     position: [-2.6074, 140.5283],
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Sentani_Lake.jpg/300px-Sentani_Lake.jpg'
+    image: '/images/DANAU SENTANI.png'
+  },
+  {
+    id: 6,
+    title: 'Grasberg (Mimika)',
+    category: 'Geologi & Tambang',
+    description: 'Lokasi tambang emas dan tembaga terbesar di dunia yang terletak di pegunungan tengah.',
+    position: [-4.0533, 137.1122],
+    image: '/images/PEGUNUNGAN TEMBAGA GRASBERG.png'
+  },
+  {
+    id: 7,
+    title: 'Taman Nasional Lorentz',
+    category: 'Kawasan Konservasi',
+    description: 'Situs warisan dunia UNESCO dengan ekosistem dari gletser hingga pesisir pantai.',
+    position: [-4.7500, 137.8333],
+    image: '/images/TAMAN NASIONAL LORENTZ.png'
+  },
+  {
+    id: 8,
+    title: 'Teluk Cenderawasih',
+    category: 'Konservasi Biota Laut',
+    description: 'Kawasan taman nasional laut raksasa, rumah bagi sekumpulan Hiu Paus jinak.',
+    position: [-2.4500, 134.6167],
+    image: '/images/TAMAN NASIONAL TELUK CENDRAWASIH.png'
   }
 ];
 

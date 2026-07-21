@@ -23,14 +23,14 @@ const Footer = () => {
         <div className="footer-section">
           <h3 className="footer-title">Kontak</h3>
           <ul className="footer-links">
-            <li>Universitas [Nama Universitas]</li>
-            <li>Fakultas [Nama Fakultas]</li>
-            <li>Capstone Project 2026</li>
+            <li>Universitas Muhammadiyah Sorong</li>
+            <li>Fakultas Teknik Informatika</li>
+            <li>UAS Etnografi - Kelompok 13</li>
           </ul>
         </div>
       </div>
       <div className="footer-bottom">
-        <p>&copy; 2026 Tim Capstone Project SIPAPUA. Hak Cipta Dilindungi.</p>
+        <p>&copy; 2026 Kelompok 13 - SIPAPUA. Hak Cipta Dilindungi.</p>
       </div>
     </footer>
   );

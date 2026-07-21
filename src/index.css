@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
   /* Color Palette - Premium Nature & Culture */
@@ -31,9 +31,12 @@
 body.dark-mode {
   --color-background: var(--color-dark-bg);
   --color-surface: var(--color-dark-surface);
-  --color-text-main: #F0F0F0;
-  --color-text-muted: #A0A0A0;
+  --color-text-main: #FFFFFF;
+  --color-text-muted: #B3B3B3;
   --color-border: #333333;
+  --color-primary: #65C18C; /* Brighter green for contrast */
+  --color-secondary: #E6B981; /* Brighter wood tone */
+  --color-accent: #F4A261; /* Brighter terracotta */
 }
 
 body.dark-mode .navbar {
