@@ -170,3 +170,13 @@ ul {
 .animate-fade-in {
   animation: fadeIn 0.8s ease forwards;
 }
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+}
